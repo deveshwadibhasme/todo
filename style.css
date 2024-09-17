@@ -119,8 +119,10 @@
   background-color: aquamarine;
   max-width: 500px;
   width: 100%;
-  max-height: 200px;
+  min-height: 50px;
+  max-height: 150px;
   position: absolute;
+  overflow-y: scroll;
   top: 50px;
   right: 0;
   border-bottom-left-radius: 20px;
