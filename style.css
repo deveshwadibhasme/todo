@@ -1,0 +1,254 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  user-select: none;
+}
+
+.wrapper {
+  display: flex;
+  max-width: 100vw;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: cadetblue;
+}
+
+.title{
+  color: #fff;
+  font-size:40px;
+  position: absolute;
+  top: 100px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  min-height: 100px;
+  background-color: aquamarine;
+  border-radius: 20px;
+  padding: 10px;
+  z-index: 4;
+  margin: 6px;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  min-height: 40px;
+  justify-content: center;
+  gap: 5px;
+}
+
+.input-field {
+  max-width: 350px;
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 40px;
+  position: relative;
+}
+
+#label-user {
+  position: absolute;
+  left: 20px;
+  top: 9px;
+  font-size: 10px;
+  z-index: 2;
+  opacity: 0;
+  cursor: text;
+  transform: translateY(0) translateX(0);
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out 1s;
+}
+#user-input {
+  outline: 0;
+  border: 1px solid black;
+  font-size: 14px;
+  font-weight: 300;
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  background-color: aliceblue;
+  z-index: 1;
+}
+
+#user-input::placeholder {
+  font-size: 12px;
+  position: absolute;
+  left: 20px;
+  top: 13px;
+  transition: opacity 0.2s ease-in;
+}
+
+.input-field:focus-within #label-user {
+  transform: translateY(-14px) translateX(-5px);
+  transition: transform 0.2s ease-in, background-color 0.2s ease-in-out 1s;
+  background-image: -webkit-linear-gradient(aquamarine, aliceblue);
+  opacity: 1;
+}
+.input-field:focus-within #user-input::placeholder {
+  opacity: 0;
+}
+
+#add-to {
+  margin-left: 5px;
+  min-height: 40px;
+  height: 100%;
+  border-radius: 30px;
+  border: 0;
+  margin: 0 auto;
+  width: 30%;
+  background-color: #fff;
+}
+
+#add-to:hover {
+  background-color: rgb(27, 215, 232);
+  cursor: pointer;
+}
+
+.container #my-task {
+  list-style: none;
+  padding: 10px;
+  min-height: 40px;
+  background-color: aquamarine;
+  max-width: 500px;
+  width: 100%;
+  max-height: 200px;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: -5;
+  content-visibility: visible;
+  opacity: 1;
+  transition: all 0.75s ease-in-out;
+  padding-top: 10px;
+}
+
+@media (max-width: 520px) {
+  .main {
+    flex-direction: column;
+    margin-block: 10px;
+  }
+
+  #add-to {
+    width: 30%;
+  }
+
+  .wrapper h1{
+    font-size: 25px;
+  }
+
+  #user-input {
+    z-index: -1;
+    height: 40px;
+  }
+  .container #my-task {
+    padding-top: 20px;
+    margin-top: 40px;
+  }
+  .task-added #my-task {
+    padding-top: 60px;
+    top: 40px;
+  }
+}
+
+#my-task::-webkit-scrollbar {
+  background-color: transparent;
+  /* border: 1px solid black; */
+  border-radius: 30px;
+  cursor: grab;
+  margin-right: 2px;
+}
+#my-task::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 30px;
+  cursor: grabbing;
+}
+
+.container #my-task li {
+  font-size: 15px;
+  padding: 8px;
+  border-radius: 30px;
+  background-color: rgb(27, 215, 232);
+  padding-left: 35px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 5px;
+}
+
+.task-added #my-task .list{
+  animation: down 0.5s ease;
+  transition: transform 0.75s ease-in-out;
+}
+
+@keyframes down {
+  from{
+    transform: translateY(-30px);
+    z-index: -20;
+  }
+  to{
+    transform: translateY(0px);  
+    z-index: 0;
+  }
+}
+
+
+#my-task .checked {
+  text-decoration: line-through;
+  color: green;
+}
+
+#my-task .list span{
+  font-size: 25px;
+  position: absolute;
+  right: 11px;
+  top: 53%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 30px;
+}
+
+#my-task .list span:hover{
+  background-color: rgba(86, 84, 84, 0.502);
+  cursor: pointer;
+  color: red;
+}
+
+#my-task li::before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid grey;
+  position: absolute;
+  left: 5px;
+  bottom: 7px;
+  cursor: pointer;
+}
+
+#my-task .checked::before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-image: url(/check.webp);
+  background-size: 100% 100%;
+  position: absolute;
+  left: 5px;
+  bottom: 7px;
+  cursor: pointer;
+}

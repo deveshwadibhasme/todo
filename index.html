@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Tomioka</title>
+    <link rel='stylesheet' href='style.css'>
+    <!-- <script src='https://kit.fontawesome.com/0f0486bb75.js' crossorigin='anonymous'></script> -->
+    <script src='script.js' defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="title">To Do List</h1>
+        <div class="container">
+            <main class="main">  
+                <div class="input-field">
+                    <label for="user-input" id="label-user">What you have to do?</label>
+                    <input type="text" name="user-input" onfocus="style.border = '1.5px solid green'" onblur="style.border = '1px solid black'" id="user-input" placeholder="What you have to do?" >
+                </div>
+                <button id="add-to" onclick="addToList()">Let's do it</button>
+            </main>
+            <ul id="my-task">
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
