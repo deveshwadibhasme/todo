@@ -1,11 +1,16 @@
-let userInput = document.querySelector('#user-input')
+let userInput= document.querySelector('#user-input')
 let taskList = document.querySelector("#my-task")
 let container = document.querySelector('.container')
 let listArray = []
 function addToList() {
     if (userInput.value === '') {
         alert('Enter something')
-    } else {
+    } 
+    else if(userInput.value === 'delete'){
+        taskList.innerHTML = "";
+        localStorage.clear();
+    }
+    else {
         let listItem = document.createElement('li')
         listItem.classList.add('list')
         listItem.innerHTML = userInput.value
@@ -18,13 +23,17 @@ function addToList() {
         userInput.value = ''
         saveData();
     }
-    added();
 }
+
 document.addEventListener('keyup', (e) => {
     if (e.key == 'Enter') {
         if (userInput.value === '') {
             alert('Enter something')
-        } else {
+        } 
+        else if(userInput.value === 'delete'){
+            taskList.innerHTML = "";
+            localStorage.clear();
+        }else {
             let listItem = document.createElement('li')
             listItem.classList.add('list')
             listItem.innerHTML = userInput.value
@@ -40,6 +49,10 @@ document.addEventListener('keyup', (e) => {
     }
 })
 
+setTimeout(()=>{
+    alert("Write Delete to delete all the  task!!")
+},5000)
+
 document.addEventListener('click', (e) => {
     if (e.target.tagName == 'LI') {
         e.target.classList.toggle('checked')
@@ -48,6 +61,9 @@ document.addEventListener('click', (e) => {
         e.target.parentElement.remove()
         listArray.pop()
         saveData();
+        if(listArray.length === 0){
+            container.classList.remove('task-added');
+        }
     }
 })
 document.addEventListener('touchup', (e) => {

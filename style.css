@@ -29,7 +29,7 @@
   position: relative;
   max-width: 500px;
   width: 100%;
-  min-height: 100px;
+  min-height: 60px;
   background-color: aquamarine;
   border-radius: 20px;
   padding: 10px;
@@ -119,11 +119,11 @@
   background-color: aquamarine;
   max-width: 500px;
   width: 100%;
-  min-height: 50px;
+  min-height: 30px;
   max-height: 150px;
   position: absolute;
   overflow-y: scroll;
-  top: 50px;
+  top: 20px;
   right: 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -186,6 +186,10 @@
   cursor: pointer;
   user-select: none;
   margin-bottom: 5px;
+}
+
+.task-added #my-task{
+  top: 45px;
 }
 
 .task-added #my-task .list{
