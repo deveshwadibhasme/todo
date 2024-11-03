@@ -186,6 +186,7 @@
   cursor: pointer;
   user-select: none;
   margin-bottom: 5px;
+  min-height:30px;
 }
 
 .task-added #my-task{
